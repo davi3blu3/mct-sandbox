@@ -41,15 +41,16 @@ export class Person {
     first: string;
     last: string;
   };
-  title: string;
-  company: string;
   email: string;
   phone: string;
+  title: string;
+  company: string;
   tshirtSize: string;
   ticketType: string;
   couponCode: string;
   fee: number;
   paid: boolean;
+  needParking: boolean;
   dietaryRestrictions: string;
   accessibilityRequirements: string;
 }
@@ -102,6 +103,8 @@ export class Venue {
     email: string;
     phone: string;
   };
+  rooms: number;
+  boothSpaces: number;
 }
 
 export class Conference {
@@ -112,4 +115,37 @@ export class Conference {
   sponsors: Sponsor[];
   crew: Crew[];
   volunteers: Volunteer[];
+  speakers: Speaker[];
+  attendees: Attendee[];
+  socialLinks: {
+    facebook: string;
+    twitter: string;
+    instagram: string;
+    linkedIn: string;
+  };
+}
+
+export class PlanningCalendar {
+  planningEvents: {};
+}
+
+export class ConferenceCalendar {
+  dayOne: {
+    date: Date;
+    sessions: Session[];
+    volunteerShifts: VolunteerShift[];
+    meal: Meal;
+  };
+  dayTwo: {
+    date: Date;
+    sessions: Session[];
+    volunteerShifts: VolunteerShift[];
+    meal: Meal;
+  };
+  dayThree: {
+    date: Date;
+    sessions: Session[];
+    volunteerShifts: VolunteerShift[];
+    meal: Meal;
+  };
 }
