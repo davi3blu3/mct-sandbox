@@ -108,15 +108,9 @@ export class Venue {
 }
 
 export class Conference {
-  date: string;
-  details: string;
-  venue: Venue;
+  conferenceYear: ConferenceYear;
   codeOfConduct: string;
-  sponsors: Sponsor[];
-  crew: Crew[];
-  volunteers: Volunteer[];
-  speakers: Speaker[];
-  attendees: Attendee[];
+  aboutUs: string;
   socialLinks: {
     facebook: string;
     twitter: string;
@@ -129,23 +123,21 @@ export class PlanningCalendar {
   planningEvents: {};
 }
 
-export class ConferenceCalendar {
-  dayOne: {
-    date: Date;
-    sessions: Session[];
-    volunteerShifts: VolunteerShift[];
-    meal: Meal;
-  };
-  dayTwo: {
-    date: Date;
-    sessions: Session[];
-    volunteerShifts: VolunteerShift[];
-    meal: Meal;
-  };
-  dayThree: {
-    date: Date;
-    sessions: Session[];
-    volunteerShifts: VolunteerShift[];
-    meal: Meal;
-  };
+export class ConferenceDay {
+  date: Date;
+  sessions: Session[];
+  volunteerShifts: VolunteerShift[];
+  meal: Meal;
+};
+
+export class ConferenceYear {
+  year: number;
+  sponsors: Sponsor[];
+  crew: Crew[];
+  volunteers: Volunteer[];
+  speakers: Speaker[];
+  attendees: Attendee[];
+  details: string;
+  venue: Venue;
+  schedule: ConferenceDay[];
 }
