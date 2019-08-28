@@ -1,4 +1,40 @@
+/* Conference */
+
+export class MusicCityConference {
+  aboutUs: string;
+  codeOfConduct: string;
+  conferences: ConferenceYear[];
+  contactUs: string;
+  socialLinks: {
+    facebook: string;
+    instagram: string;
+    linkedIn: string;
+    twitter: string;
+  };
+}
+
+export class ConferenceYear {
+  attendees: Attendee[];
+  crew: Crew[];
+  details: string;
+  schedule: ConferenceDay[];
+  speakers: Speaker[];
+  sponsors: Sponsor[];
+  venue: Venue;
+  volunteers: Volunteer[];
+  year: number;
+}
+
+export class ConferenceDay {
+  date: Date;
+  sessions: Session[];
+  volunteerShifts: VolunteerShift[];
+  meal: Meal;
+}
+
+
 /* Events */
+
 export class Session {
   title: string;
   details: string;
@@ -22,21 +58,14 @@ export class Meal {
   location: string;
 }
 
-/* Sponsors */
-export class Sponsor {
-  name: string;
-  address: Address;
-  level: string; // Platinum, Gold, Silver, Bronze, Community
-  fee: number;
-  boothLocation: string;
-  returning: boolean; // designation for multi-year partners?
-  agreementSent: boolean;
-  agreementSigned: boolean;
-  paid: boolean;
+export class PlanningCalendar {
+  planningEvents: {};
 }
 
 /* Attendee types */
+
 export class Person {
+  id: number;
   name: {
     first: string;
     last: string;
@@ -49,46 +78,64 @@ export class Person {
   ticketType: string;
   couponCode: string;
   fee: number;
+  yearAttended: string;
   paid: boolean;
+  roleIds: Roles[];
   needParking: boolean;
   dietaryRestrictions: string;
   accessibilityRequirements: string;
 }
 
-export class SponsorRep extends Person {
-  sponsor: Sponsor;
-  alsoSpeaking: boolean;
+export class Roles {
+    id: number;
+    roleName: string;
 }
 
-export class Speaker extends Person {
-  sessions: Session[];
-  imageUrl: string;
+export class Attendee extends Person {
+  personId: number;
+  mySessions: Session[];
 }
 
 export class Crew extends Person {
+  personId: number;
   adminRole: string;
+  biography: string;
   imageUrl: string;
 }
 
+export class Speaker extends Person {
+  personId: number;
+  sessions: Session[];
+  biography: string;
+  imageUrl: string;
+}
+
+export class SponsorRep extends Person {
+  personId: number;
+  sponsor: Sponsor;
+}
+
 export class Volunteer extends Person {
+  personId: number;
   shifts: VolunteerShift[];
   mySessions: Session[];
 }
 
-export class Attendee extends Person {
-  mySessions: Session[];
+/* Sponsors */
+
+export class Sponsor {
+  name: string;
+  address: Address;
+  year: string;
+  level: string; // Platinum, Gold, Silver, Bronze, Community
+  fee: number;
+  paid: boolean;
+  agreementSent: boolean;
+  agreementSigned: boolean;
+  boothLocation: string;
 }
 
 /* General Details */
-export class Address {
-  street1: string;
-  street2: string;
-  city: string;
-  state: string;
-  province: string;
-  postalCode: string;
-  country: string;
-}
 
 export class Venue {
   name: string;
@@ -107,45 +154,10 @@ export class Venue {
   boothSpaces: number;
 }
 
-export class Conference {
-  date: string;
-  details: string;
-  venue: Venue;
-  codeOfConduct: string;
-  sponsors: Sponsor[];
-  crew: Crew[];
-  volunteers: Volunteer[];
-  speakers: Speaker[];
-  attendees: Attendee[];
-  socialLinks: {
-    facebook: string;
-    twitter: string;
-    instagram: string;
-    linkedIn: string;
-  };
-}
-
-export class PlanningCalendar {
-  planningEvents: {};
-}
-
-export class ConferenceCalendar {
-  dayOne: {
-    date: Date;
-    sessions: Session[];
-    volunteerShifts: VolunteerShift[];
-    meal: Meal;
-  };
-  dayTwo: {
-    date: Date;
-    sessions: Session[];
-    volunteerShifts: VolunteerShift[];
-    meal: Meal;
-  };
-  dayThree: {
-    date: Date;
-    sessions: Session[];
-    volunteerShifts: VolunteerShift[];
-    meal: Meal;
-  };
+export class Address {
+  street1: string;
+  street2: string;
+  city: string;
+  state: string;
+  postalCode: string;
 }
